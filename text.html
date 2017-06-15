@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+        
+
+        <script type=""></script>
+
+        <style>
+            .img {
+                width: 300px;
+                height: 300px;
+                background-color: red;
+            }
+        </style>
+    
+        <script src="https://code.jquery.com/jquery-1.12.4.1.js" async type="text/javascript"></script> -> request 요청
+        <script src="https://code.jquery.com/jquery-1.12.4.2.js" async type="text/javascript"></script> -> request 요청
+        <script src="https://code.jquery.com/jquery-1.12.4.3.js" async type="text/javascript"></script> -> request 요청
+    </head>
+    
+    <body>
+        <div class="img" tabindex="-1">안녕하세요</div>
+
+
+    </body>
+    
+
+    <script>
+
+        const str = 'aabccddeeff';
+
+        const findChartString = str => {
+            const hash = Array(...Array(256))
+                .fill(0).map((v, i) => i)
+                .reduce((o, i) => {
+                    o[i] = false;
+                    return o;
+                }, {});
+
+            [...str].forEach((s, i, arr, code = s.charCodeAt()) => {
+                hash[code] = hash[code] == true ? null : hash[code] == false ? true : null;
+            });
+
+            const uniqueCodeArray = Reflect.ownKeys(hash).filter(key => hash[key] == true),
+                  firstUniqueKey = uniqueCodeArray.shift(),
+                  firstUniqueStr = String.fromCharCode(firstUniqueKey),
+                  isEmpty        = firstUniqueKey === undefined;
+
+            return isEmpty ? 'unique key is empty' : firstUniqueStr;
+        }
+
+        console.log(
+            findChartString(str)
+        );
+
+
+    </script>
+</html>
